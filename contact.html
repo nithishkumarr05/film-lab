@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Lab | Contact — Visit Our Darkroom Studio</title>
+  <link rel="icon" type="image/jpeg" href="#">
+  <meta name="description"
+    content="Contact Film Lab — Visit our darkroom studio, send us your film for processing, or inquire about darkroom rentals and analog printing services.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#9B7B4C',
+            'theme-gold-dark': '#7A5E3A',
+            'dark-gray': '#1a1a1a',
+            'light-peach': '#F5F0EB',
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          },
+          letterSpacing: {
+            'widest-xl': '0.3em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] {
+      direction: rtl;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes bounce-slow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 2s infinite;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #mobile-menu {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-dropdown-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-dropdown-icon.rotate {
+      transform: rotate(180deg);
+    }
+
+    .img-zoom-container {
+      overflow: hidden;
+    }
+
+    .img-zoom-container img {
+      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .img-zoom-container:hover img {
+      transform: scale(1.08);
+    }
+
+    .marquee-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+    }
+
+    .marquee-content {
+      display: flex;
+      animation: marquee 20s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .text-outline {
+      color: transparent;
+      -webkit-text-stroke: 1px currentColor;
+    }
+
+    /* Contact Form Focus Effects */
+    .contact-input:focus {
+      outline: none;
+      border-color: #9B7B4C;
+      box-shadow: 0 0 0 3px rgba(155, 123, 76, 0.1);
+    }
+
+    /* Toast animation */
+    @keyframes toastFade {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    .toast-animation {
+      animation: toastFade 2.5s ease forwards;
+    }
+  </style>
+</head>
+
+<body
+  class="font-sans text-gray-700 antialiased transition-colors duration-300 bg-white dark:bg-dark-gray dark:text-gray-300">
+
+  <!-- ========== HEADER (EXACTLY AS PROVIDED) ========== -->
+  <nav
+    class="bg-white/95 dark:bg-dark-gray/95 backdrop-blur-sm fixed w-full top-0 z-50 shadow-md border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto nav-container px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex flex-col">
+              <span
+                class="text-2xl font-serif font-bold text-dark-gray dark:text-white nav-logo-text tracking-wide transition-colors duration-300"><span
+                  class="text-theme-gold italic">Film Lab</span></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 nav-menu-container mx-4">
+          <div class="flex items-center gap-0.5 lg:gap-4">
+            <div class="relative group">
+              <button
+                class="nav-link text-dark-gray dark:text-white hover:text-theme-gold dark:hover:text-theme-gold font-medium transition duration-300 flex items-center gap-1 px-3 py-2 pb-4 mb-[-8px] rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 uppercase text-xs tracking-wider">
+                <span>Home</span>
+                <i class="fas fa-chevron-down text-[10px] ms-1"></i>
+              </button>
+              <div
+                class="absolute start-0 mt-2 w-48 bg-white dark:bg-dark-gray border border-gray-100 dark:border-gray-700 rounded-none shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                <a href="index.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 1</a>
+                <a href="home2.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 2</a>
+              </div>
+            </div>
+            <a href="about.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">About</a>
+            <a href="service.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Services</a>
+            <a href="flim.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Film</a>
+            <a href="rental.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Rentals</a>
+            <a href="store.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Store</a>
+            <a href="gallery.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Gallery</a>
+            <a href="contact.html"
+              class="nav-link text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider border-b-2 border-theme-gold">Contact</a>
+
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center gap-4">
+          <a href="login.html"
+            class="text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 text-xs uppercase tracking-wider">Login</a>
+          <a href="signup.html"
+            class="bg-theme-gold hover:bg-theme-gold-dark text-white px-6 py-2.5 font-medium transition duration-300 text-xs uppercase tracking-widest shadow-md">Register</a>
+          <button id="rtl-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle RTL"><span class="text-[10px] font-bold">RTL</span></button>
+          <button id="theme-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle Theme">
+            <i class="fas fa-moon dark:hidden text-xs"></i>
+            <i class="fas fa-sun hidden dark:inline text-xs"></i>
+          </button>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button"
+            class="text-dark-gray dark:text-white hover:text-theme-gold focus:outline-none p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition duration-300"
+            aria-label="Menu">
+            <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            <i id="close-icon" class="fas fa-times text-xl hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu"
+      class="hidden xl:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-white/10 transition-colors duration-300 shadow-xl">
+      <div class="px-4 pt-4 pb-6 space-y-2">
+        <div class="border-b border-gray-100 dark:border-white/10 pb-1">
+          <button id="mobile-home-dropdown"
+            class="w-full flex items-center justify-between px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">
+            <span>Home</span>
+            <i class="fas fa-chevron-down text-xs mobile-dropdown-icon" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden ps-6 mt-1 space-y-1">
+            <a href="index.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 1</a>
+            <a href="home2.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 2</a>
+          </div>
+        </div>
+        <a href="about.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">About</a>
+        <a href="service.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Services</a>
+        <a href="flim.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Film</a>
+        <a href="rental.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Rentals</a>
+        <a href="store.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Store</a>
+        <a href="gallery.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Gallery</a>
+        <a href="contact.html"
+          class="block px-4 py-3 text-theme-gold bg-gray-50 dark:bg-white/5 rounded-lg transition duration-300 text-sm font-medium tracking-wide">Contact</a>
+
+        <div class="pt-4 border-t border-gray-200 dark:border-white/10 mt-4">
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <button id="mobile-rtl-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">RTL
+              Mode</button>
+            <button id="mobile-theme-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Theme</button>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="login.html"
+              class="block w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Login</a>
+            <a href="signup.html"
+              class="block w-full bg-theme-gold hover:bg-theme-gold-dark text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider font-medium shadow-md">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== CONTACT PAGE HERO SECTION ========== -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://i.pinimg.com/474x/08/f0/eb/08f0eb6b3af257e2743bd6538f228bf2.jpg" alt="Darkroom ambiance"
+        class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90"></div>
+    </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-theme-gold text-xs md:text-sm uppercase tracking-[0.4em] font-semibold mb-4 animate-fade-in">Get in
+        Touch</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 animate-fade-in">
+        Visit Our<br>
+        <span class="italic text-theme-gold">Darkroom Studio</span>
+      </h1>
+      <p class="text-gray-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed animate-fade-in">
+        Have questions about film processing, darkroom rentals, or want to schedule a studio tour? We'd love to hear
+        from you.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT INFORMATION & FORM SECTION ========== -->
+  <section class="py-20 md:py-28 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+      <!-- Left Column: Contact Info -->
+      <div class="order-2 lg:order-1">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-px bg-theme-gold"></div>
+          <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold">Reach Out</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white leading-tight mb-6">
+          Let's Start a<br>
+          <span class="italic text-theme-gold">Conversation</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-10">
+          Whether you're a seasoned analog photographer or just getting started with your first roll of film, our team
+          is here to help. Drop by the studio, give us a call, or fill out the form — we'll get back to you within 24
+          hours.
+        </p>
+
+        <!-- Contact Details Cards -->
+        <div class="space-y-6 mb-10">
+          <div
+            class="flex items-start gap-5 p-5 bg-light-peach dark:bg-white/5 rounded-2xl transition-all duration-300 hover:shadow-lg">
+            <div class="w-12 h-12 rounded-full bg-theme-gold/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-theme-gold text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white mb-1">Studio Address</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-sm font-light">46 Darkroom Alley, Film
+                District,<br>Chennai, Tamil Nadu 600001, India</p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-5 p-5 bg-light-peach dark:bg-white/5 rounded-2xl transition-all duration-300 hover:shadow-lg">
+            <div class="w-12 h-12 rounded-full bg-theme-gold/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone-alt text-theme-gold text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white mb-1">Phone Numbers</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-sm font-light">Studio: <a href="tel:+919876543210"
+                  class="hover:text-theme-gold transition">+91 98765 43210</a><br>Lab Support: <a
+                  href="tel:+919876543211" class="hover:text-theme-gold transition">+91 98765 43211</a></p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-5 p-5 bg-light-peach dark:bg-white/5 rounded-2xl transition-all duration-300 hover:shadow-lg">
+            <div class="w-12 h-12 rounded-full bg-theme-gold/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-theme-gold text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white mb-1">Email Us</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-sm font-light">General Inquiries: <a
+                  href="mailto:studio@filmlab.in"
+                  class="hover:text-theme-gold transition">studio@filmlab.in</a><br>Order Status: <a
+                  href="mailto:orders@filmlab.in" class="hover:text-theme-gold transition">orders@filmlab.in</a></p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-5 p-5 bg-light-peach dark:bg-white/5 rounded-2xl transition-all duration-300 hover:shadow-lg">
+            <div class="w-12 h-12 rounded-full bg-theme-gold/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-clock text-theme-gold text-xl"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white mb-1">Studio Hours</h4>
+              <p class="text-gray-600 dark:text-gray-400 text-sm font-light">Monday - Friday: 10:00 AM - 7:00
+                PM<br>Saturday: 11:00 AM - 5:00 PM<br>Sunday: Closed (Online orders accepted)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="pt-4">
+          <p class="text-sm font-semibold text-dark-gray dark:text-white mb-4">Follow our analog journey:</p>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-theme-gold hover:text-white transition-all duration-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-theme-gold hover:text-white transition-all duration-300">
+              <i class="fab fa-flickr"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-theme-gold hover:text-white transition-all duration-300">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-theme-gold hover:text-white transition-all duration-300">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="order-1 lg:order-2">
+        <div class="bg-light-peach dark:bg-white/5 rounded-3xl p-6 md:p-8 lg:p-10 shadow-xl">
+          <h3 class="text-2xl font-serif font-bold text-dark-gray dark:text-white mb-2">Send Us a Message</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 font-light">Fill out the form below and we'll get back
+            to you shortly.</p>
+
+          <form id="contactForm" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label
+                  class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                  <i class="fas fa-user me-2 text-theme-gold"></i> First Name
+                </label>
+                <input type="text" id="firstName" placeholder="Ansel"
+                  class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all">
+              </div>
+              <div>
+                <label
+                  class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                  <i class="fas fa-user me-2 text-theme-gold"></i> Last Name
+                </label>
+                <input type="text" id="lastName" placeholder="Adams"
+                  class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                <i class="fas fa-envelope me-2 text-theme-gold"></i> Email Address
+              </label>
+              <input type="email" id="email" placeholder="studio@filmlab.com" required
+                class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all">
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                <i class="fas fa-phone me-2 text-theme-gold"></i> Phone Number (Optional)
+              </label>
+              <input type="tel" id="phone" placeholder="+91 98765 43210"
+                class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all">
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                <i class="fas fa-tag me-2 text-theme-gold"></i> Subject
+              </label>
+              <select id="subject"
+                class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all cursor-pointer">
+                <option value="">Select a subject...</option>
+                <option value="Film Processing">Film Processing Inquiry</option>
+                <option value="Darkroom Rental">Darkroom Rental</option>
+                <option value="Printing Services">Analog Printing Services</option>
+                <option value="Workshop">Workshop Registration</option>
+                <option value="General">General Question</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-2">
+                <i class="fas fa-comment me-2 text-theme-gold"></i> Message
+              </label>
+              <textarea id="message" rows="5" placeholder="Tell us about your project or question..." required
+                class="contact-input w-full px-4 py-3 bg-white dark:bg-dark-gray border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium focus:outline-none transition-all resize-none"></textarea>
+            </div>
+
+            <button type="submit"
+              class="btn-shine w-full bg-theme-gold hover:bg-theme-gold-dark text-white font-bold text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl group">
+              <i class="fas fa-paper-plane rtl:rotate-180 transform group-hover:translate-x-1 transition-transform"></i>
+              Send Message
+            </button>
+            <p class="text-xs text-gray-500 mt-2 text-center">
+              We’ll respond within 24 hours.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAP SECTION ========== -->
+  <section class="py-12 bg-light-peach dark:bg-[#111] transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold block mb-2">Find Us</span>
+        <h2 class="text-2xl md:text-3xl font-serif font-bold text-dark-gray dark:text-white">Visit Our Darkroom Studio
+        </h2>
+      </div>
+      <div class="rounded-2xl overflow-hidden shadow-xl h-[350px] md:h-[450px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.123456789012!2d80.250000!3d13.083333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265e5e5e5e5e5%3A0x1234567890abcdef!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Film Lab Studio Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ SECTION ========== -->
+  <section class="py-20 md:py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold block mb-2">Quick Answers</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white">Frequently Asked Questions
+      </h2>
+      <p class="text-gray-500 dark:text-gray-400 mt-3 font-light">Find quick answers to common questions about our
+        services.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="p-6 bg-light-peach dark:bg-white/5 rounded-xl">
+        <i class="fas fa-film text-theme-gold text-xl mb-3"></i>
+        <h3 class="font-bold text-dark-gray dark:text-white mb-2">How do I mail in my film?</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-light">Visit our "Services" page for our mail-in form
+          and shipping instructions. We accept all major film formats.</p>
+      </div>
+      <div class="p-6 bg-light-peach dark:bg-white/5 rounded-xl">
+        <i class="fas fa-clock text-theme-gold text-xl mb-3"></i>
+        <h3 class="font-bold text-dark-gray dark:text-white mb-2">What's the turnaround time?</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-light">Standard processing: 3-5 business days. Rush
+          options available for an additional fee.</p>
+      </div>
+      <div class="p-6 bg-light-peach dark:bg-white/5 rounded-xl">
+        <i class="fas fa-key text-theme-gold text-xl mb-3"></i>
+        <h3 class="font-bold text-dark-gray dark:text-white mb-2">Can I rent the darkroom?</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-light">Yes! Hourly and monthly memberships available.
+          Visit our Rentals page for pricing and availability.</p>
+      </div>
+      <div class="p-6 bg-light-peach dark:bg-white/5 rounded-xl">
+        <i class="fas fa-box-open text-theme-gold text-xl mb-3"></i>
+        <h3 class="font-bold text-dark-gray dark:text-white mb-2">Do you sell film and chemistry?</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-light">Absolutely! We stock fresh and expired film from
+          Kodak, Ilford, Fuji, and CineStill in our online store.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (EXACTLY AS PROVIDED) ========== -->
+  <footer class="bg-dark-gray text-white pt-20 pb-10">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <div>
+          <h3 class="text-3xl font-serif font-bold mb-6"><span class="text-theme-gold italic">Film Lab</span></h3>
+          <p class="text-gray-400 mb-8 text-sm leading-relaxed font-light">
+            Premium film developing, darkroom rental, and analog printing services. Preserving the craft of silver
+            gelatin and fine art photography.
+          </p>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-flickr"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Explore</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="service.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Lab Services</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> The Darkroom</a></li>
+            <li><a href="store.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Film Shop</a></li>
+            <li><a href="rental.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Pricing & Mail-In</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Services</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="service.html" class="hover:text-white transition-colors">C-41 & E-6 Development</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">B&W Hand Processing</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">Drum & Flatbed Scanning</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">Silver Gelatin Prints</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Studio / Lab</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-theme-gold mt-1 me-3"></i>
+              <span>46 Darkroom Alley, Film District<br>Chennai, Tamil Nadu, India</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-theme-gold me-3"></i>
+              <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-theme-gold me-3"></i>
+              <a href="mailto:studio@classicfilmlab.com"
+                class="hover:text-white transition-colors">studio@filmlab.in</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-xs uppercase tracking-wider font-light">
+          © 2026 Classic Film Lab. Preserving Analog Heritage.
+        </p>
+        <div class="flex gap-6 text-xs text-gray-500 uppercase tracking-wider font-light">
+          <a href="#" class="hover:text-white transition-colors">Lab Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Toast Notification
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      let bgColor = 'bg-emerald-600';
+      let icon = '<i class="fas fa-check-circle text-white text-sm"></i>';
+      if (type === 'error') {
+        bgColor = 'bg-red-500';
+        icon = '<i class="fas fa-times-circle text-white text-sm"></i>';
+      } else if (type === 'warning') {
+        bgColor = 'bg-amber-500';
+        icon = '<i class="fas fa-exclamation-triangle text-white text-sm"></i>';
+      } else if (type === 'info') {
+        bgColor = 'bg-theme-gold';
+        icon = '<i class="fas fa-info-circle text-white text-sm"></i>';
+      }
+      toast.className = `toast-animation mb-2 px-5 py-3 rounded-xl shadow-lg text-xs sm:text-sm font-medium flex items-center gap-2 pointer-events-auto ${bgColor} text-white`;
+      toast.innerHTML = `${icon} <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => { if (toast && toast.remove) toast.remove(); }, 2600);
+    }
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const firstName = document.getElementById('firstName')?.value.trim() || '';
+        const lastName = document.getElementById('lastName')?.value.trim() || '';
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const subject = document.getElementById('subject').value;
+
+        if (!email) {
+          showToast('Please enter your email address', 'warning');
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          showToast('Please enter a valid email address', 'error');
+          return;
+        }
+        if (!message) {
+          showToast('Please enter your message', 'warning');
+          return;
+        }
+
+        const name = firstName || 'Photographer';
+        showToast(`✨ Thank you ${name}! We'll get back to you soon.`, 'success');
+
+        contactForm.reset();
+      });
+    }
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark');
+    } else if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+    }
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+    if (localStorage.getItem('direction') === 'rtl') {
+      html.setAttribute('dir', 'rtl');
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          if (menuIcon && closeIcon) {
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    function setupMobileDropdown(dropdownBtnId, menuContainerId, iconId) {
+      const dropdownBtn = document.getElementById(dropdownBtnId);
+      const menuContainer = document.getElementById(menuContainerId);
+      const icon = document.getElementById(iconId);
+
+      if (dropdownBtn && menuContainer && icon) {
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isHidden = menuContainer.classList.contains('hidden');
+          if (isHidden) {
+            menuContainer.classList.remove('hidden');
+            icon.classList.add('rotate');
+          } else {
+            menuContainer.classList.add('hidden');
+            icon.classList.remove('rotate');
+          }
+        });
+      }
+    }
+
+    setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+
+    document.addEventListener('click', function (event) {
+      const isClickInsideMenu = mobileMenu?.contains(event.target);
+      const isClickOnButton = mobileMenuButton?.contains(event.target);
+      if (mobileMenu && !mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+        mobileMenu.classList.add('hidden');
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        document.body.style.overflow = '';
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1280 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+  <style>
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-shine:hover::after {
+      left: 100%;
+    }
+
+    .dark .fa-sun {
+      display: none !important;
+    }
+
+    .dark .fa-moon {
+      display: inline-block !important;
+    }
+
+    .fa-moon {
+      display: none;
+    }
+
+    .fa-sun {
+      display: inline-block;
+    }
+  </style>
+</body>
+
+</html>

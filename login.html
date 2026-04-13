@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Film Lab | Login — Darkroom Photography Studio</title>
+  <meta name="description" content="Login to Film Lab — access your film processing orders, darkroom bookings, and analog archive.">
+
+  <!-- Tailwind + Fonts + Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#9B7B4C',
+            'theme-gold-dark': '#7A5E3A',
+            'dark-gray': '#1a1a1a',
+            'light-peach': '#F5F0EB',
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            'widest-xl': '0.3em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth background & animations */
+    body {
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Hide scrollbar but keep functionality for the card */
+    .hide-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      display: block;
+    }
+    .hide-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar-thumb {
+      background: #9B7B4C;
+      border-radius: 10px;
+    }
+    .hide-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #9B7B4C transparent;
+    }
+
+    /* Background slow-zoom animation */
+    @keyframes slowZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+    .slow-zoom {
+      animation: slowZoom 28s ease-in-out infinite alternate;
+    }
+
+    /* Button shine effect */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .btn-shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-shine:hover::after {
+      left: 100%;
+    }
+
+    /* Toast notification */
+    @keyframes toastFade {
+      0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    }
+    .toast-animation {
+      animation: toastFade 2.5s ease forwards;
+    }
+
+    /* RTL specific fine-tune */
+    [dir="rtl"] .rtl\:right-auto {
+      right: auto;
+    }
+    [dir="rtl"] .rtl\:left-0 {
+      left: 0;
+    }
+    [dir="rtl"] .rtl\:rotate-180 {
+      transform: rotate(180deg);
+    }
+    [dir="rtl"] .me-2 {
+      margin-left: 0.5rem;
+      margin-right: 0;
+    }
+    [dir="rtl"] .ms-2 {
+      margin-right: 0.5rem;
+      margin-left: 0;
+    }
+    /* Fix for autofill dark mode */
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px #f9f9f9 inset !important;
+    }
+    .dark input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px #1a1a1a inset !important;
+      -webkit-text-fill-color: #e5e5e5 !important;
+    }
+
+    /* Custom logo style - both "Film" and "Lab" in elegant italic gold */
+    .logo-film, .logo-lab {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+    .logo-film {
+      color: #9B7B4C;
+    }
+    .logo-lab {
+      color: #9B7B4C;
+    }
+    /* Light mode adjustments for better contrast */
+    .dark .logo-film, .dark .logo-lab {
+      color: #9B7B4C;
+    }
+  </style>
+</head>
+
+<body class="bg-black dark:bg-black h-[100dvh] w-screen overflow-hidden flex items-center justify-center font-sans antialiased transition-colors duration-300 relative px-4 py-4 sm:py-8">
+
+  <!-- Background Layer (cinematic, same mood as index) -->
+  <div class="fixed inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1510127034890-b3e8b4b2a21f?auto=format&fit=crop&q=90&w=2000" 
+         alt="Analog camera and film aesthetic" 
+         class="w-full h-full object-cover object-center slow-zoom">
+    <!-- Rich gradients overlay to match index hero style -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/50 to-black/85"></div>
+    <!-- subtle film grain texture -->
+    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjMiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjZikiIG9wYWNpdHk9IjAuMyIvPjwvc3ZnPg=='); background-repeat: repeat; background-size: 200px;"></div>
+    <div class="absolute inset-0 opacity-25 pointer-events-none mix-blend-overlay" style="background: radial-gradient(circle at 20% 30%, rgba(155,123,76,0.3) 0%, transparent 50%), radial-gradient(circle at 85% 70%, rgba(155,123,76,0.2) 0%, transparent 55%);"></div>
+  </div>
+
+  <!-- Top Controls (RTL / Theme) -->
+  <div class="absolute top-4 right-4 sm:top-6 sm:right-6 flex items-center gap-3 z-50 pointer-events-auto">
+    <button id="rtl-toggle-login" 
+      class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md shadow-sm border border-theme-gold/40 flex items-center justify-center text-white hover:text-theme-gold hover:border-theme-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-theme-gold"
+      title="Toggle RTL">
+      <i class="fas fa-exchange-alt text-xs"></i>
+    </button>
+    <button id="theme-toggle-login" 
+      class="w-10 h-10 rounded-full bg-black/50 backdrop-blur-md shadow-sm border border-theme-gold/40 flex items-center justify-center text-white hover:text-theme-gold hover:border-theme-gold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-theme-gold"
+      title="Toggle Theme">
+      <i class="fas fa-sun text-sm"></i>
+      <i class="fas fa-moon hidden text-sm"></i>
+    </button>
+  </div>
+
+  <!-- Main Card: fully responsive, matches index logo/font identity -->
+  <main class="w-full max-w-[1000px] bg-white/95 dark:bg-dark-gray/95 backdrop-blur-md rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col md:flex-row rtl:flex-row-reverse border border-white/20 dark:border-white/10 relative z-10 max-h-[95dvh] md:h-[650px] overflow-y-auto md:overflow-hidden hide-scrollbar">
+
+    <!-- Left Panel: Darkroom atmosphere (hidden on mobile) -->
+    <div class="hidden md:flex w-full md:w-1/2 relative text-white flex-col justify-between p-8 lg:p-12 h-full overflow-hidden rounded-l-2xl rtl:rounded-l-none rtl:rounded-r-2xl">
+      <img src="https://images.unsplash.com/photo-1581594545659-bfdfd6b4df9b?auto=format&fit=crop&q=80&w=800" 
+           alt="Darkroom developing tray" 
+           class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay">
+      <div class="absolute inset-0 bg-gradient-to-b from-dark-gray/95 via-dark-gray/80 to-dark-gray/95"></div>
+      <div class="absolute left-0 top-0 bottom-0 w-1 bg-theme-gold/40 rtl:left-auto rtl:right-0"></div>
+      
+      <div class="relative z-10 text-left flex flex-col h-full justify-between">
+        <div>
+          <!-- Logo: both "Film" and "Lab" in elegant italic gold font -->
+         <div class="mb-12">
+  <a href="index.html" class="cursor-pointer no-underline hover:opacity-80 transition-opacity">
+    <span class="text-3xl font-serif font-bold italic text-theme-gold tracking-wide logo-film">Film</span>
+    <span class="text-3xl font-serif font-bold italic text-theme-gold tracking-wide logo-lab">Lab</span>
+  </a>
+</div>
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-theme-gold/20 text-theme-gold mb-6">
+            <i class="fas fa-camera-retro text-2xl"></i>
+          </div>
+          <h1 class="text-3xl lg:text-4xl font-serif font-bold leading-tight mb-4">
+            The Darkroom<br>Portal
+          </h1>
+          <p class="text-sm text-gray-300 font-light max-w-[280px] leading-relaxed">
+            Access your film processing orders, darkroom bookings, and analog archive.
+          </p>
+        </div>
+
+        <div class="relative z-10 mt-8 bg-black/40 backdrop-blur-md border border-theme-gold/30 rounded-2xl p-6 shadow-xl">
+          <div class="flex text-theme-gold text-xs gap-1 mb-3">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="text-sm text-gray-200 font-light italic leading-relaxed mb-4">
+            "The best lab in the city. My medium format scans are always pristine, and the darkroom rental is a lifesaver."
+          </p>
+          <div class="text-[10px] font-bold tracking-wider text-white uppercase opacity-80 flex items-center gap-2">
+            <span class="w-6 h-px bg-theme-gold"></span>
+            MAYA SHARMA, FINE ART PHOTOGRAPHER
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Login Form (same font/logo style as index) -->
+    <div class="w-full md:w-1/2 p-6 sm:p-10 lg:p-14 flex flex-col justify-center h-full bg-white/95 dark:bg-dark-gray/95">
+
+      <!-- Mobile Logo: both "Film" and "Lab" in italic gold font -->
+      <div class="md:hidden text-center mb-8 pt-4">
+        <div class="text-3xl font-serif font-bold italic text-theme-gold tracking-wide">
+          FilmLab
+        </div>
+        <div class="w-12 h-px bg-theme-gold/50 mx-auto mt-3"></div>
+      </div>
+
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-dark-gray dark:text-white mb-2">
+          Welcome Back
+        </h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 font-light">
+          Sign in to continue your analog journey.
+        </p>
+      </div>
+
+      <!-- Social login row -->
+      <div class="flex justify-center md:justify-start gap-3 sm:gap-4 mb-8">
+        <button class="social-login-btn flex-1 h-11 sm:h-12 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-theme-gold/10 dark:hover:bg-theme-gold/20 transition-all duration-300 focus:ring-2 focus:ring-theme-gold focus:outline-none group">
+          <i class="fab fa-google text-[#DB4437] text-lg group-hover:scale-105 transition-transform"></i>
+        </button>
+        <button class="social-login-btn flex-1 h-11 sm:h-12 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-theme-gold/10 dark:hover:bg-theme-gold/20 transition-all duration-300 focus:ring-2 focus:ring-theme-gold focus:outline-none group">
+          <i class="fab fa-facebook-f text-[#1877F2] text-lg group-hover:scale-105 transition-transform"></i>
+        </button>
+        <button class="social-login-btn flex-1 h-11 sm:h-12 bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10 flex items-center justify-center hover:bg-theme-gold/10 dark:hover:bg-theme-gold/20 transition-all duration-300 focus:ring-2 focus:ring-theme-gold focus:outline-none group">
+          <i class="fab fa-apple text-gray-900 dark:text-white text-xl pb-0.5 group-hover:scale-105 transition-transform"></i>
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center mb-8">
+        <div class="w-full border-t border-gray-200 dark:border-white/10"></div>
+        <div class="absolute bg-white dark:bg-dark-gray px-4 text-[10px] font-bold text-gray-400 tracking-widest uppercase">Or login with email</div>
+      </div>
+
+      <form class="space-y-5" id="loginForm">
+        <div class="text-left">
+          <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">
+            <i class="fas fa-envelope me-2 text-theme-gold"></i> Email Address
+          </label>
+          <input type="email" id="loginEmail" placeholder="studio@filmlab.com"
+            class="w-full px-4 py-3.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-theme-gold dark:text-white transition-all"
+            required>
+        </div>
+
+        <div class="text-left">
+          <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">
+            <i class="fas fa-lock me-2 text-theme-gold"></i> Password
+          </label>
+          <div class="relative">
+            <input type="password" id="loginPassword" placeholder="••••••••"
+              class="w-full px-4 py-3.5 pe-12 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-theme-gold dark:text-white transition-all"
+              required>
+            <button type="button" id="togglePasswordBtn"
+              class="absolute inset-y-0 right-0 pe-4 flex items-center text-gray-400 hover:text-theme-gold transition-colors focus:outline-none ltr:right-0 rtl:left-0 rtl:right-auto rtl:ps-4 rtl:pe-0">
+              <i class="fas fa-eye-slash" id="toggleIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <label class="flex items-center cursor-pointer group">
+            <input type="checkbox" id="rememberCheckbox"
+              class="w-4 h-4 rounded border-gray-300 text-theme-gold focus:ring-theme-gold cursor-pointer bg-transparent">
+            <span class="ms-2 text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-dark-gray dark:group-hover:text-white transition-colors">Remember me</span>
+          </label>
+          <a href="#" class="text-xs font-bold text-dark-gray dark:text-gray-300 uppercase tracking-wide hover:text-theme-gold dark:hover:text-theme-gold transition-colors">
+            Forgot Password?
+          </a>
+        </div>
+
+        <button type="submit"
+          class="btn-shine w-full mt-4 bg-theme-gold hover:bg-theme-gold-dark text-white font-bold text-sm py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-gold dark:focus:ring-offset-dark-gray">
+          <i class="fas fa-camera rtl:rotate-180 transform group-hover:scale-110 transition-transform"></i>
+          Access Darkroom
+        </button>
+      </form>
+
+      <div class="mt-8 text-center md:text-left">
+        <p class="text-[13px] font-medium text-gray-500 dark:text-gray-400">
+          New to the lab?
+          <a href="signup.html"
+            class="font-bold text-theme-gold hover:text-theme-gold-dark transition-colors border-b border-transparent hover:border-theme-gold pb-0.5 ml-1">Start your journey →</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none"></div>
+
+  <script>
+    // --------------------------------------------------------------
+    // 1. Toast Notification
+    // --------------------------------------------------------------
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      let bgColor = 'bg-emerald-600';
+      let icon = '<i class="fas fa-check-circle text-white text-sm"></i>';
+      if (type === 'error') {
+        bgColor = 'bg-red-500';
+        icon = '<i class="fas fa-times-circle text-white text-sm"></i>';
+      } else if (type === 'warning') {
+        bgColor = 'bg-amber-500';
+        icon = '<i class="fas fa-exclamation-triangle text-white text-sm"></i>';
+      } else if (type === 'info') {
+        bgColor = 'bg-theme-gold';
+        icon = '<i class="fas fa-info-circle text-white text-sm"></i>';
+      }
+      toast.className = `toast-animation mb-2 px-5 py-3 rounded-xl shadow-lg text-xs sm:text-sm font-medium flex items-center gap-2 pointer-events-auto ${bgColor} text-white`;
+      toast.innerHTML = `${icon} <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => { if (toast && toast.remove) toast.remove(); }, 2600);
+    }
+
+    // --------------------------------------------------------------
+    // 2. Password Visibility Toggle
+    // --------------------------------------------------------------
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    const passwordInput = document.getElementById('loginPassword');
+    const toggleIcon = document.getElementById('toggleIcon');
+    if (toggleBtn && passwordInput) {
+      toggleBtn.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          toggleIcon.classList.remove('fa-eye-slash');
+          toggleIcon.classList.add('fa-eye');
+        } else {
+          passwordInput.type = 'password';
+          toggleIcon.classList.remove('fa-eye');
+          toggleIcon.classList.add('fa-eye-slash');
+        }
+      });
+    }
+
+    // --------------------------------------------------------------
+    // 3. Theme Toggle (consistent with index)
+    // --------------------------------------------------------------
+    const themeToggle = document.getElementById('theme-toggle-login');
+    const htmlTag = document.documentElement;
+    function updateThemeIcons() {
+      const isDark = htmlTag.classList.contains('dark');
+      const sunIcons = document.querySelectorAll('.fa-sun');
+      const moonIcons = document.querySelectorAll('.fa-moon');
+      if (isDark) {
+        sunIcons.forEach(icon => icon.style.display = 'none');
+        moonIcons.forEach(icon => icon.style.display = 'inline-block');
+      } else {
+        sunIcons.forEach(icon => icon.style.display = 'inline-block');
+        moonIcons.forEach(icon => icon.style.display = 'none');
+      }
+    }
+    function toggleTheme() {
+      if (htmlTag.classList.contains('dark')) {
+        htmlTag.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        showToast('Light mode activated', 'info');
+      } else {
+        htmlTag.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        showToast('Dark mode activated', 'info');
+      }
+      updateThemeIcons();
+    }
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    // Load initial theme
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      htmlTag.classList.add('dark');
+    } else {
+      htmlTag.classList.remove('dark');
+    }
+    updateThemeIcons();
+
+    // --------------------------------------------------------------
+    // 4. RTL Toggle (smooth)
+    // --------------------------------------------------------------
+    const rtlToggle = document.getElementById('rtl-toggle-login');
+    function toggleRTL() {
+      if (htmlTag.getAttribute('dir') === 'rtl') {
+        htmlTag.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+        showToast('LTR layout', 'info');
+      } else {
+        htmlTag.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+        showToast('RTL layout', 'info');
+      }
+    }
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (localStorage.getItem('direction') === 'rtl') {
+      htmlTag.setAttribute('dir', 'rtl');
+    }
+
+    // --------------------------------------------------------------
+    // 5. Remember Me & Form Handling
+    // --------------------------------------------------------------
+    const savedEmail = localStorage.getItem('savedEmail');
+    const rememberCheckbox = document.getElementById('rememberCheckbox');
+    const emailInput = document.getElementById('loginEmail');
+    if (savedEmail && emailInput) {
+      emailInput.value = savedEmail;
+      if (rememberCheckbox) rememberCheckbox.checked = true;
+    }
+
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+        if (!email) {
+          showToast('Please enter your email address', 'warning');
+          return;
+        }
+        if (!password) {
+          showToast('Please enter your password', 'warning');
+          return;
+        }
+        if (!email.includes('@') || !email.includes('.')) {
+          showToast('Please enter a valid email address', 'error');
+          return;
+        }
+        // Save "remember me"
+        if (rememberCheckbox && rememberCheckbox.checked) {
+          localStorage.setItem('savedEmail', email);
+        } else {
+          localStorage.removeItem('savedEmail');
+        }
+        const userName = email.split('@')[0];
+        showToast(`✨ Welcome back, ${userName}! Your analog journey continues.`, 'success');
+        // Optional: redirect to dashboard after 1 second
+        // setTimeout(() => { window.location.href = "dashboard.html"; }, 1200);
+      });
+    }
+
+    // Social login demo (placeholder)
+    document.querySelectorAll('.social-login-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        showToast('Social login demo — integrate your auth provider', 'info');
+      });
+    });
+
+    // Forgot password demo
+    const forgotLink = document.querySelector('a[href="#"]');
+    if (forgotLink && forgotLink.innerText.includes('Forgot')) {
+      forgotLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast('Password reset link will be sent to your email', 'info');
+      });
+    }
+
+    // Additional subtle: fix body overflow on mobile when keyboard appears
+    const mainCard = document.querySelector('main');
+    if (mainCard) {
+      const inputs = mainCard.querySelectorAll('input');
+      inputs.forEach(inp => {
+        inp.addEventListener('focus', () => {
+          setTimeout(() => {
+            mainCard.scrollTo({ top: mainCard.scrollHeight, behavior: 'smooth' });
+          }, 200);
+        });
+      });
+    }
+  </script>
+  <style>
+    /* Ensure dark mode icons toggle correctly */
+    .dark .fa-sun { display: none !important; }
+    .dark .fa-moon { display: inline-block !important; }
+    .fa-moon { display: none; }
+    .fa-sun { display: inline-block; }
+    /* responsive tap highlights */
+    @media (max-width: 768px) {
+      button, a, [role="button"] { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    }
+    /* custom scroll on card */
+    .hide-scrollbar {
+      scrollbar-width: thin;
+    }
+  </style>
+</body>
+</html>

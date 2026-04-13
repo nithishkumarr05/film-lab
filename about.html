@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Film Lab | About — Our Darkroom Story</title>
+  <link rel="icon" type="image/jpeg" href="#">
+  <meta name="description"
+    content="Learn about Film Lab — our analog photography studio, master printers, and commitment to preserving the art of film photography.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#9B7B4C',
+            'theme-gold-dark': '#7A5E3A',
+            'dark-gray': '#1a1a1a',
+            'light-peach': '#F5F0EB',
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          },
+          letterSpacing: {
+            'widest-xl': '0.3em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] {
+      direction: rtl;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    @keyframes bounce-slow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 2s infinite;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #mobile-menu {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-dropdown-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-dropdown-icon.rotate {
+      transform: rotate(180deg);
+    }
+
+    .img-zoom-container {
+      overflow: hidden;
+    }
+
+    .img-zoom-container img {
+      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .img-zoom-container:hover img {
+      transform: scale(1.08);
+    }
+
+    .section-spacing {
+      scroll-margin-top: 100px;
+    }
+
+    .stat-number {
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+
+<body
+  class="font-sans text-gray-700 antialiased transition-colors duration-300 bg-white dark:bg-dark-gray dark:text-gray-300">
+
+  <!-- ========== HEADER ========== -->
+  <nav
+    class="bg-white/95 dark:bg-dark-gray/95 backdrop-blur-sm fixed w-full top-0 z-50 shadow-md border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto nav-container px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex flex-col">
+              <span
+                class="text-2xl font-serif font-bold text-dark-gray dark:text-white nav-logo-text tracking-wide transition-colors duration-300"><span
+                  class="text-theme-gold italic">Film Lab</span></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 nav-menu-container mx-4">
+          <div class="flex items-center gap-0.5 lg:gap-4">
+            <div class="relative group">
+              <button
+                class="nav-link text-dark-gray dark:text-white hover:text-theme-gold dark:hover:text-theme-gold font-medium transition duration-300 flex items-center gap-1 px-3 py-2 pb-4 mb-[-8px] rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 uppercase text-xs tracking-wider">
+                <span>Home</span>
+                <i class="fas fa-chevron-down text-[10px] ms-1"></i>
+              </button>
+              <div
+                class="absolute start-0 mt-2 w-48 bg-white dark:bg-dark-gray border border-gray-100 dark:border-gray-700 rounded-none shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                <a href="index.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 1</a>
+                <a href="home2.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 2</a>
+              </div>
+            </div>
+            <a href="about.html"
+              class="nav-link text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider border-b-2 border-theme-gold">About</a>
+            <a href="service.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Services</a>
+            <a href="flim.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Film</a>
+            <a href="rental.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Rentals</a>
+            <a href="store.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Store</a>
+
+            <a href="gallery.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Gallery</a>
+            <a href="contact.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Contact</a>
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center gap-4">
+          <a href="login.html"
+            class="text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 text-xs uppercase tracking-wider">Login</a>
+          <a href="signup.html"
+            class="bg-theme-gold hover:bg-theme-gold-dark text-white px-6 py-2.5 font-medium transition duration-300 text-xs uppercase tracking-widest shadow-md">Register</a>
+          <button id="rtl-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle RTL"><span class="text-[10px] font-bold">RTL</span></button>
+          <button id="theme-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle Theme">
+            <i class="fas fa-moon dark:hidden text-xs"></i>
+            <i class="fas fa-sun hidden dark:inline text-xs"></i>
+          </button>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button"
+            class="text-dark-gray dark:text-white hover:text-theme-gold focus:outline-none p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition duration-300"
+            aria-label="Menu">
+            <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            <i id="close-icon" class="fas fa-times text-xl hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu"
+      class="hidden xl:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-white/10 transition-colors duration-300 shadow-xl">
+      <div class="px-5 pt-5 pb-7 space-y-2">
+        <div class="border-b border-gray-100 dark:border-white/10 pb-1">
+          <button id="mobile-home-dropdown"
+            class="w-full flex items-center justify-between px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">
+            <span>Home</span>
+            <i class="fas fa-chevron-down text-xs mobile-dropdown-icon" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden ps-6 mt-1 space-y-1">
+            <a href="index.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 1</a>
+            <a href="home2.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 2</a>
+          </div>
+        </div>
+        <a href="about.html"
+          class="block px-4 py-3 text-theme-gold bg-gray-50 dark:bg-white/5 rounded-lg transition duration-300 text-sm font-medium tracking-wide">About</a>
+        <a href="service.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Services</a>
+        <a href="flim.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Film</a>
+        <a href="rental.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Rentals</a>
+        <a href="store.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Store</a>
+
+        <a href="gallery.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Gallery</a>
+        <a href="contact.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Contact</a>
+
+        <div class="pt-4 border-t border-gray-200 dark:border-white/10 mt-4">
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <button id="mobile-rtl-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">RTL
+              Mode</button>
+            <button id="mobile-theme-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Theme</button>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="login.html"
+              class="block w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Login</a>
+            <a href="signup.html"
+              class="block w-full bg-theme-gold hover:bg-theme-gold-dark text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider font-medium shadow-md">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="relative pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden section-spacing">
+    <div class="absolute inset-0 z-0">
+      <img src="assets/Abb.jpg" alt="Darkroom ambiance" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90"></div>
+    </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+      <p class="text-theme-gold text-xs md:text-sm uppercase tracking-[0.4em] font-semibold mb-5 animate-fade-in">Our
+        Story</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 animate-fade-in">
+        Preserving the Art of<br>
+        <span class="italic text-theme-gold">Analog Photography</span>
+      </h1>
+      <p class="text-gray-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed animate-fade-in">
+        Since 2012, Film Lab has been the sanctuary for photographers who believe in the magic of silver halide
+        crystals, chemical baths, and the tactile beauty of handcrafted prints.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== PHILOSOPHY SECTION ========== -->
+  <section class="py-20 md:py-28 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 section-spacing">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="order-2 lg:order-1">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-px bg-theme-gold"></div>
+          <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold">Our Philosophy</span>
+        </div>
+        <h2
+          class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-gray dark:text-white leading-tight mb-6">
+          More Than Just<br>
+          <span class="italic text-theme-gold">Chemistry</span>
+        </h2>
+        <p class="text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-6 text-lg">
+          In an era of instant gratification, we champion the slow, deliberate craft of film photography. Every roll
+          that passes through our hands is treated with reverence — from the moment it's loaded onto our dip-and-dunk
+          processors to the final archival wash.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-8">
+          Our master printers have decades of combined experience, having studied under legends of the silver gelatin
+          tradition. We don't just process film — we preserve memories, one grain at a time.
+        </p>
+        <div class="grid grid-cols-3 gap-4 pt-4">
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-serif font-bold text-theme-gold stat-number" data-target="13">13+
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">Years of Service</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-serif font-bold text-theme-gold stat-number" data-target="25">25k+
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">Rolls Processed</p>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl md:text-4xl font-serif font-bold text-theme-gold stat-number" data-target="4">4</div>
+            <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider mt-1">Master Printers</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="order-1 lg:order-2 relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl img-zoom-container">
+        <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?auto=format&fit=crop&q=90&w=1200"
+          alt="Film developing process" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM SECTION ========== -->
+  <section class="py-20 md:py-28 bg-light-peach dark:bg-[#111] transition-colors duration-300 section-spacing">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="text-center mb-16">
+        <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold block mb-4">The Masters Behind the
+          Magic</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-gray dark:text-white">Meet Our Team
+        </h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mt-4 font-light">Dedicated craftsmen who treat
+          every negative as a work of art.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
+        <div class="text-center group">
+          <div
+            class="w-44 h-44 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden mb-5 border-4 border-theme-gold/30 group-hover:border-theme-gold transition-all duration-300 img-zoom-container shadow-lg">
+            <img src="assets/Ab1.jpg" alt="Master Printer" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-serif font-bold text-dark-gray dark:text-white">James Richardson</h3>
+          <p class="text-theme-gold text-sm font-semibold mt-1">Master Printer</p>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-3 font-light max-w-xs mx-auto">30+ years of silver
+            gelatin expertise. Trained under Ansel Adams' apprentices.</p>
+        </div>
+
+        <div class="text-center group">
+          <div
+            class="w-44 h-44 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden mb-5 border-4 border-theme-gold/30 group-hover:border-theme-gold transition-all duration-300 img-zoom-container shadow-lg">
+            <img src="assets/Ab2.jpg" alt="Lab Director" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-serif font-bold text-dark-gray dark:text-white">Elena Vasquez</h3>
+          <p class="text-theme-gold text-sm font-semibold mt-1">Lab Director</p>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-3 font-light max-w-xs mx-auto">Color specialist with a
+            passion for C-41 and E-6 chemistry.</p>
+        </div>
+
+        <div class="text-center group">
+          <div
+            class="w-44 h-44 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden mb-5 border-4 border-theme-gold/30 group-hover:border-theme-gold transition-all duration-300 img-zoom-container shadow-lg">
+            <img src="assets/Ab3.jpg" alt="Scanning Specialist" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-serif font-bold text-dark-gray dark:text-white">David Kim</h3>
+          <p class="text-theme-gold text-sm font-semibold mt-1">Scanning Specialist</p>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-3 font-light max-w-xs mx-auto">Noritsu & Frontier
+            expert. Drum scanning virtuoso.</p>
+        </div>
+
+        <div class="text-center group">
+          <div
+            class="w-44 h-44 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden mb-5 border-4 border-theme-gold/30 group-hover:border-theme-gold transition-all duration-300 img-zoom-container shadow-lg">
+            <img src="assets/Ab4.jpg" alt="Darkroom Technician" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-xl font-serif font-bold text-dark-gray dark:text-white">Sophia Chen</h3>
+          <p class="text-theme-gold text-sm font-semibold mt-1">Darkroom Technician</p>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mt-3 font-light max-w-xs mx-auto">Specializes in large
+            format and alternative processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FACILITY SECTION ========== -->
+  <section class="py-20 md:py-28 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 section-spacing">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div
+        class="relative h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl img-zoom-container order-2 lg:order-1">
+        <img src="assets/Ab5.jpg" alt="Darkroom facility" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-12 h-px bg-theme-gold"></div>
+          <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold">Our Facility</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white leading-tight mb-6">
+          A Sanctuary for<br>
+          <span class="italic text-theme-gold">Analog Artists</span>
+        </h2>
+        <div class="space-y-5 mb-8">
+          <div class="flex items-start gap-4">
+            <i class="fas fa-microscope text-theme-gold text-xl mt-1"></i>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">State-of-the-Art Lab</h4>
+              <p class="text-gray-500 dark:text-gray-400 text-sm font-light">Temperature-controlled dip-and-dunk
+                processors for consistent, streak-free development.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i class="fas fa-print text-theme-gold text-xl mt-1"></i>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">6 Enlarger Stations</h4>
+              <p class="text-gray-500 dark:text-gray-400 text-sm font-light">Beseler 23C and 45MX enlargers capable of
+                up to 4x5 format printing.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <i class="fas fa-cloud-upload-alt text-theme-gold text-xl mt-1"></i>
+            <div>
+              <h4 class="font-bold text-dark-gray dark:text-white">High-Resolution Scanning</h4>
+              <p class="text-gray-500 dark:text-gray-400 text-sm font-light">Noritsu HS-1800 and Hasselblad Flextight
+                drum scanners available.</p>
+            </div>
+          </div>
+        </div>
+        <a href="service.html"
+          class="inline-flex items-center text-theme-gold hover:text-theme-gold-dark font-bold text-xs uppercase tracking-widest transition duration-300 border-b border-theme-gold pb-1">
+          Explore Our Services <i class="fas fa-arrow-right ms-2 text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA SECTION ========== -->
+  <section class="py-20 md:py-28 bg-dark-gray text-white section-spacing">
+    <div class="max-w-4xl mx-auto px-5 text-center">
+      <i class="fas fa-camera-retro text-5xl text-theme-gold mb-6"></i>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-6">Ready to Start Your<br>Analog Journey?</h2>
+      <p class="text-gray-400 font-light mb-10 max-w-lg mx-auto">
+        Whether you're dropping off your first roll or you're a seasoned large-format shooter, we're here to help.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-5">
+        <a href="service.html"
+          class="bg-theme-gold hover:bg-theme-gold-dark text-white px-8 py-4 uppercase text-xs font-bold tracking-widest transition-all duration-300 shadow-xl">View
+          Services</a>
+        <a href="contact.html"
+          class="border border-white hover:bg-white hover:text-dark-gray text-white px-8 py-4 uppercase text-xs font-bold tracking-widest transition-all duration-300">Contact
+          Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-dark-gray text-white pt-20 pb-10">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div>
+          <h3 class="text-3xl font-serif font-bold mb-6"><span class="text-theme-gold italic">Film Lab</span></h3>
+          <p class="text-gray-400 mb-8 text-sm leading-relaxed font-light">
+            Premium film developing, darkroom rental, and analog printing services. Preserving the craft of silver
+            gelatin and fine art photography.
+          </p>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors"><i
+                class="fab fa-flickr"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors"><i
+                class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Explore</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="service.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Lab Services</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> The Darkroom</a></li>
+            <li><a href="store.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Film Shop</a></li>
+            <li><a href="rental.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Pricing & Mail-In</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Services</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="service.html" class="hover:text-white transition-colors">C-41 & E-6 Development</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">B&W Hand Processing</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">Drum & Flatbed Scanning</a></li>
+            <li><a href="service.html" class="hover:text-white transition-colors">Silver Gelatin Prints</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Studio / Lab</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li class="flex items-start"><i class="fas fa-map-marker-alt text-theme-gold mt-1 me-3"></i><span>46
+                Darkroom Alley, Film District<br>Chennai, Tamil Nadu, India</span></li>
+            <li class="flex items-center"><i class="fas fa-phone text-theme-gold me-3"></i><a href="tel:+919876543210"
+                class="hover:text-white transition-colors">+91 98765 43210</a></li>
+            <li class="flex items-center"><i class="fas fa-envelope text-theme-gold me-3"></i><a
+                href="mailto:studio@filmlab.in" class="hover:text-white transition-colors">studio@filmlab.in</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-xs uppercase tracking-wider font-light">© 2026 Classic Film Lab. Preserving Analog
+          Heritage.</p>
+        <div class="flex gap-6 text-xs text-gray-500 uppercase tracking-wider font-light"><a href="#"
+            class="hover:text-white transition-colors">Lab Policy</a><a href="#"
+            class="hover:text-white transition-colors">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+      (function () {
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const html = document.documentElement;
+        function toggleTheme() {
+          if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+          } else {
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+          }
+        }
+        if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+        if (localStorage.getItem('theme') === 'dark') html.classList.add('dark');
+        else if (localStorage.getItem('theme') === 'light') html.classList.remove('dark');
+        else html.classList.add('dark');
+
+        // RTL toggle
+        const rtlToggle = document.getElementById('rtl-toggle');
+        const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+        function toggleRTL() {
+          if (html.getAttribute('dir') === 'rtl') {
+            html.removeAttribute('dir');
+            localStorage.setItem('direction', 'ltr');
+          } else {
+            html.setAttribute('dir', 'rtl');
+            localStorage.setItem('direction', 'rtl');
+          }
+        }
+        if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+        if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+        if (localStorage.getItem('direction') === 'rtl') html.setAttribute('dir', 'rtl');
+
+        // Mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+          mobileMenuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+              mobileMenu.classList.remove('hidden');
+              menuIcon.classList.add('hidden');
+              closeIcon.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+            } else {
+              mobileMenu.classList.add('hidden');
+              menuIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
+              document.body.style.overflow = '';
+            }
+          });
+        }
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              if (menuIcon && closeIcon) { menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
+              document.body.style.overflow = '';
+            }
+          });
+        });
+        function setupMobileDropdown(dropdownBtnId, menuContainerId, iconId) {
+          const dropdownBtn = document.getElementById(dropdownBtnId);
+          const menuContainer = document.getElementById(menuContainerId);
+          const icon = document.getElementById(iconId);
+          if (dropdownBtn && menuContainer && icon) {
+            dropdownBtn.addEventListener('click', (e) => {
+              e.preventDefault(); e.stopPropagation();
+              const isHidden = menuContainer.classList.contains('hidden');
+              if (isHidden) { menuContainer.classList.remove('hidden'); icon.classList.add('rotate'); }
+              else { menuContainer.classList.add('hidden'); icon.classList.remove('rotate'); }
+            });
+          }
+        }
+        setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+        document.addEventListener('click', function (event) {
+          const isClickInsideMenu = mobileMenu?.contains(event.target);
+          const isClickOnButton = mobileMenuButton?.contains(event.target);
+          if (mobileMenu && !mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon && closeIcon) { menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
+            document.body.style.overflow = '';
+          }
+        });
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 1280 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon && closeIcon) { menuIcon.classList.remove('hidden'); closeIcon.classList.add('hidden'); }
+            document.body.style.overflow = '';
+          }
+        });
+
+        // Counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const animateCounters = () => {
+          counters.forEach(counter => {
+            const targetText = counter.getAttribute('data-target');
+            if (!targetText) return;
+            let targetVal = parseInt(targetText, 10);
+            const isK = counter.innerText.includes('k+');
+            if (isK && targetVal === 25) targetVal = 25000;
+            let current = 0;
+            const updateCounter = () => {
+              if (current < targetVal) {
+                current += Math.ceil(targetVal / 50);
+                if (current > targetVal) current = targetVal;
+                if (isK && targetVal === 25000) counter.innerText = Math.floor(current / 1000) + 'k+';
+                else if (!isK && targetVal === 13) counter.innerText = current + '+';
+                else counter.innerText = current;
+                setTimeout(updateCounter, 20);
+              } else {
+                if (isK && targetVal === 25000) counter.innerText = '25k+';
+                else if (!isK && targetVal === 13) counter.innerText = '13+';
+                else if (targetVal === 4) counter.innerText = '4';
+              }
+            };
+            updateCounter();
+          });
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        if (counters.length) observer.observe(counters[0]);
+      })();
+  </script>
+</body>
+
+</html>

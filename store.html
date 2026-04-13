@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Film Lab | Store — Film, Paper & Chemistry</title>
+  <link rel="icon" type="image/jpeg" href="#">
+  <meta name="description"
+    content="Shop premium analog photography supplies — 35mm, 120, and 4x5 film, darkroom paper, chemistry, and accessories. Worldwide shipping available.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'theme-gold': '#9B7B4C',
+            'theme-gold-dark': '#7A5E3A',
+            'dark-gray': '#1a1a1a',
+            'light-peach': '#F5F0EB',
+            white: '#FFFFFF'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Lato"', 'sans-serif'],
+          },
+          letterSpacing: {
+            'widest-xl': '0.3em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [dir="rtl"] {
+      direction: rtl;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #mobile-menu {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-dropdown-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-dropdown-icon.rotate {
+      transform: rotate(180deg);
+    }
+
+    /* Product Card Styles - Fully Responsive */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      padding: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .product-grid {
+        gap: 2.5rem;
+      }
+    }
+
+    .product-card {
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      width: 100%;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.08);
+    }
+
+    .product-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .product-content {
+        padding: 1.5rem;
+      }
+    }
+
+    .btn-store {
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-store:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-store:active {
+      transform: translateY(0);
+    }
+
+    /* Toast animation */
+    @keyframes toastFade {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    .toast-animation {
+      animation: toastFade 2.5s ease forwards;
+    }
+  </style>
+</head>
+
+<body
+  class="font-sans text-gray-700 antialiased transition-colors duration-300 bg-white dark:bg-dark-gray dark:text-gray-300">
+
+  <!-- ========== HEADER ========== -->
+  <nav
+    class="bg-white/95 dark:bg-dark-gray/95 backdrop-blur-sm fixed w-full top-0 z-50 shadow-md border-b border-gray-200 dark:border-white/5 transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto nav-container px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <div class="flex-shrink-0">
+          <a href="index.html" class="flex items-center gap-3">
+            <div class="flex flex-col">
+              <span
+                class="text-2xl font-serif font-bold text-dark-gray dark:text-white nav-logo-text tracking-wide transition-colors duration-300"><span
+                  class="text-theme-gold italic">Film Lab</span></span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden xl:flex items-center justify-center flex-1 nav-menu-container mx-4">
+          <div class="flex items-center gap-0.5 lg:gap-4">
+            <div class="relative group">
+              <button
+                class="nav-link text-dark-gray dark:text-white hover:text-theme-gold dark:hover:text-theme-gold font-medium transition duration-300 flex items-center gap-1 px-3 py-2 pb-4 mb-[-8px] rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 uppercase text-xs tracking-wider">
+                <span>Home</span>
+                <i class="fas fa-chevron-down text-[10px] ms-1"></i>
+              </button>
+              <div
+                class="absolute start-0 mt-2 w-48 bg-white dark:bg-dark-gray border border-gray-100 dark:border-gray-700 rounded-none shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 z-50">
+                <a href="index.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 1</a>
+                <a href="home2.html"
+                  class="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-light-peach dark:hover:bg-white/10 hover:text-theme-gold transition duration-300 text-sm">Home
+                  Page 2</a>
+              </div>
+            </div>
+            <a href="about.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">About</a>
+            <a href="service.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Services</a>
+            <a href="flim.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Film</a>
+            <a href="rental.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Rentals</a>
+            <a href="store.html"
+              class="nav-link text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider border-b-2 border-theme-gold">Store</a>
+            <a href="gallery.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Gallery</a>
+            <a href="contact.html"
+              class="nav-link text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-xs uppercase tracking-wider">Contact</a>
+
+          </div>
+        </div>
+
+        <div class="hidden xl:flex items-center gap-4">
+          <a href="login.html"
+            class="text-dark-gray dark:text-white hover:text-theme-gold font-medium transition duration-300 text-xs uppercase tracking-wider">Login</a>
+          <a href="signup.html"
+            class="bg-theme-gold hover:bg-theme-gold-dark text-white px-6 py-2.5 font-medium transition duration-300 text-xs uppercase tracking-widest shadow-md">Register</a>
+          <button id="rtl-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle RTL"><span class="text-[10px] font-bold">RTL</span></button>
+          <button id="theme-toggle"
+            class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 flex items-center justify-center text-dark-gray dark:text-white transition duration-300 ms-2"
+            title="Toggle Theme">
+            <i class="fas fa-moon dark:hidden text-xs"></i>
+            <i class="fas fa-sun hidden dark:inline text-xs"></i>
+          </button>
+        </div>
+
+        <div class="xl:hidden flex items-center">
+          <button id="mobile-menu-button"
+            class="text-dark-gray dark:text-white hover:text-theme-gold focus:outline-none p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition duration-300"
+            aria-label="Menu">
+            <i id="menu-icon" class="fas fa-bars text-xl"></i>
+            <i id="close-icon" class="fas fa-times text-xl hidden"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu"
+      class="hidden xl:hidden bg-white dark:bg-[#1a1a1a] border-t border-gray-200 dark:border-white/10 transition-colors duration-300 shadow-xl">
+      <div class="px-4 pt-4 pb-6 space-y-2">
+        <div class="border-b border-gray-100 dark:border-white/10 pb-1">
+          <button id="mobile-home-dropdown"
+            class="w-full flex items-center justify-between px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">
+            <span>Home</span>
+            <i class="fas fa-chevron-down text-xs mobile-dropdown-icon" id="mobile-home-icon"></i>
+          </button>
+          <div id="mobile-home-menu" class="hidden ps-6 mt-1 space-y-1">
+            <a href="index.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 1</a>
+            <a href="home2.html"
+              class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-theme-gold hover:bg-gray-50 dark:hover:bg-white/5 rounded-md text-sm transition">Home
+              Page 2</a>
+          </div>
+        </div>
+        <a href="about.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">About</a>
+        <a href="service.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Services</a>
+        <a href="flim.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Film</a>
+        <a href="rental.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Rentals</a>
+        <a href="store.html"
+          class="block px-4 py-3 text-theme-gold bg-gray-50 dark:bg-white/5 rounded-lg transition duration-300 text-sm font-medium tracking-wide">Store</a>
+        <a href="gallery.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Gallery</a>
+        <a href="contact.html"
+          class="block px-4 py-3 text-dark-gray dark:text-white hover:bg-gray-50 dark:hover:bg-white/5 hover:text-theme-gold rounded-lg transition duration-300 text-sm font-medium tracking-wide">Contact</a>
+
+
+        <div class="pt-4 border-t border-gray-200 dark:border-white/10 mt-4">
+          <div class="grid grid-cols-2 gap-3 mb-3">
+            <button id="mobile-rtl-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">RTL
+              Mode</button>
+            <button id="mobile-theme-toggle"
+              class="w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Theme</button>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="login.html"
+              class="block w-full bg-gray-100 dark:bg-white/10 text-dark-gray dark:text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider hover:bg-gray-200 dark:hover:bg-white/20 font-medium">Login</a>
+            <a href="signup.html"
+              class="block w-full bg-theme-gold hover:bg-theme-gold-dark text-white px-4 py-3 rounded-lg text-center transition duration-300 text-sm uppercase tracking-wider font-medium shadow-md">Register</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== STORE HERO SECTION ========== -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.pexels.com/photos/1647972/pexels-photo-1647972.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        alt="Film rolls and camera" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90"></div>
+    </div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-theme-gold text-xs md:text-sm uppercase tracking-[0.4em] font-semibold mb-4 animate-fade-in">Analog
+        Essentials</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 animate-fade-in">
+        Film<br>
+        <span class="italic text-theme-gold">& Supplies</span>
+      </h1>
+      <p class="text-gray-300 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed animate-fade-in">
+        Premium film stocks, darkroom paper, chemistry, and accessories. Free shipping on orders over ₹3,000.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED BRANDS SECTION (NEW) ========== -->
+  <section class="py-16 bg-light-peach dark:bg-[#111] transition-colors duration-300">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold block mb-2">Trusted Brands</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white">We Stock The Best</h2>
+        <p class="text-gray-500 dark:text-gray-400 mt-3 font-light max-w-2xl mx-auto">Premium analog photography brands
+          trusted by professionals worldwide</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 items-stretch">
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-film text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Kodak</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Professional Films</p>
+        </div>
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-camera text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Ilford</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">B&W Specialists</p>
+        </div>
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-palette text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Foma</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Classic Emulsions</p>
+        </div>
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-flask text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Cinestill</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Creative Films</p>
+        </div>
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-droplet text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Tetenal</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Chemistry Experts</p>
+        </div>
+        <div
+          class="bg-white dark:bg-dark-gray/50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-scroll text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-dark-gray dark:text-white">Bergger</h3>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Fine Art Paper</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCT GRID - 6 CARDS ========== -->
+  <section class="py-16 md:py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="w-12 h-px bg-theme-gold"></div>
+        <span class="text-theme-gold text-xs uppercase tracking-[0.3em] font-bold">Featured Products</span>
+        <div class="w-12 h-px bg-theme-gold"></div>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-dark-gray dark:text-white mb-4">
+        Shop Our Collection
+      </h2>
+      <p class="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-light">
+        Hand-picked essentials for analog photographers
+      </p>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- 6 Product Cards will be populated here -->
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US SECTION (NEW) ========== -->
+  <section class="py-16 md:py-20 bg-dark-gray text-white">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <i class="fas fa-star text-4xl text-theme-gold mb-4"></i>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Why Shop With Us</h2>
+        <p class="text-gray-400 font-light max-w-2xl mx-auto">We're more than just a store — we're your analog
+          photography partner</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-theme-gold/20 flex items-center justify-center">
+            <i class="fas fa-check-circle text-3xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-2 text-white">Fresh Stock</h3>
+          <p class="text-gray-400 text-sm font-light">All film is refrigerated and within expiration date for optimal
+            results</p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-theme-gold/20 flex items-center justify-center">
+            <i class="fas fa-truck-fast text-3xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-2 text-white">Fast Shipping</h3>
+          <p class="text-gray-400 text-sm font-light">Orders ship within 24 hours with tracking and insurance included
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-theme-gold/20 flex items-center justify-center">
+            <i class="fas fa-headset text-3xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-2 text-white">Expert Support</h3>
+          <p class="text-gray-400 text-sm font-light">Our team of photographers is here to help with any questions</p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-theme-gold/20 flex items-center justify-center">
+            <i class="fas fa-tag text-3xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-2 text-white">Member Prices</h3>
+          <p class="text-gray-400 text-sm font-light">Lab members save 10% on all store purchases every day</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SHIPPING INFO ========== -->
+  <section class="py-16 bg-white dark:bg-dark-gray/50 transition-colors duration-300">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <i class="fas fa-box-open text-5xl text-theme-gold mb-6"></i>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white mb-4">Shipping & Returns</h2>
+      <p class="text-gray-500 dark:text-gray-400 font-light mb-8 max-w-2xl mx-auto">
+        Fast, reliable shipping for all your analog photography needs.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div class="p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-box text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-bold text-dark-gray dark:text-white mb-2">Free Shipping</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">On orders over ₹3,000</p>
+        </div>
+        <div class="p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-globe text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-bold text-dark-gray dark:text-white mb-2">Worldwide Delivery</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">3-7 business days</p>
+        </div>
+        <div class="p-6">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-gold/10 flex items-center justify-center">
+            <i class="fas fa-undo-alt text-2xl text-theme-gold"></i>
+          </div>
+          <h3 class="font-bold text-dark-gray dark:text-white mb-2">Easy Returns</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">30-day return policy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-dark-gray text-white pt-20 pb-10">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+        <div>
+          <h3 class="text-3xl font-serif font-bold mb-6"><span class="text-theme-gold italic">Film Lab</span></h3>
+          <p class="text-gray-400 mb-8 text-sm leading-relaxed font-light">
+            Premium film developing, darkroom rental, and analog printing services. Preserving the craft of silver
+            gelatin and fine art photography.
+          </p>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-flickr"></i>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-theme-gold hover:text-white transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Explore</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="service.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Lab Services</a></li>
+            <li><a href="about.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> The Darkroom</a></li>
+            <li><a href="store.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Film Shop</a></li>
+            <li><a href="rental.html" class="hover:text-white transition-colors flex items-center gap-2"><i
+                  class="fas fa-angle-right text-[10px] text-theme-gold"></i> Pricing & Mail-In</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Shop Categories</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li><a href="#" class="hover:text-white transition-colors">35mm Film</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">120 Medium Format</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Darkroom Paper</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Chemistry & Kits</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest mb-6 text-theme-gold">Studio / Lab</h4>
+          <ul class="space-y-4 text-sm text-gray-400 font-light">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-theme-gold mt-1 me-3"></i>
+              <span>46 Darkroom Alley, Film District<br>Chennai, Tamil Nadu, India</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-theme-gold me-3"></i>
+              <a href="tel:+919876543210" class="hover:text-white transition-colors">+91 98765 43210</a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-theme-gold me-3"></i>
+              <a href="mailto:studio@classicfilmlab.com"
+                class="hover:text-white transition-colors">studio@filmlab.in</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-xs uppercase tracking-wider font-light">
+          © 2026 Classic Film Lab. Preserving Analog Heritage.
+        </p>
+        <div class="flex gap-6 text-xs text-gray-500 uppercase tracking-wider font-light">
+          <a href="#" class="hover:text-white transition-colors">Lab Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none"></div>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // Product Data - 6 items only
+    const products = [
+      {
+        id: 1,
+        name: 'Kodak Portra 400',
+        format: '35mm',
+        price: 1250,
+        originalPrice: 1450,
+        inStock: true,
+        image: 'assets/portra_photo.png',
+        description: 'Professional color negative film with fine grain and natural colors'
+      },
+      {
+        id: 2,
+        name: 'Ilford HP5 Plus',
+        format: '35mm',
+        price: 850,
+        originalPrice: null,
+        inStock: true,
+        image: 'assets/f2.jpg',
+        description: 'Classic B&W film with wide exposure latitude'
+      },
+      {
+        id: 3,
+        name: 'Cinestill 800T',
+        format: '35mm',
+        price: 1650,
+        originalPrice: null,
+        inStock: true,
+        image: 'assets/cinestill_photo.png',
+        description: 'Tungsten-balanced color film for creative night photography'
+      },
+      {
+        id: 4,
+        name: 'Kodak Portra 800',
+        format: '120',
+        price: 1450,
+        originalPrice: 1650,
+        inStock: true,
+        image: 'assets/Ab5.jpg',
+        description: 'Professional medium format color negative film'
+      },
+      {
+        id: 5,
+        name: 'Ilford Multigrade RC',
+        format: 'Paper',
+        price: 2200,
+        originalPrice: 2500,
+        inStock: true,
+        image: 'assets/f3.jpg',
+        description: 'Resin coated variable contrast paper, 8x10, 25 sheets'
+      },
+      {
+        id: 6,
+        name: 'Tetenal C-41 Kit',
+        format: 'Chemistry',
+        price: 4500,
+        originalPrice: 5200,
+        inStock: true,
+        image: 'assets/bw_street_photo.png',
+        description: 'Complete color negative processing kit for home development'
+      }
+    ];
+
+    // Render products
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+
+      grid.innerHTML = products.map(product => `
+        <div class="product-card bg-white dark:bg-dark-gray/50 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-800">
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy">
+            ${!product.inStock ? '<span class="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Out of Stock</span>' : ''}
+            ${product.originalPrice ? '<span class="absolute top-3 left-3 bg-theme-gold text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Sale</span>' : ''}
+          </div>
+          <div class="product-content">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif font-bold text-dark-gray dark:text-white text-base sm:text-lg">${product.name}</h3>
+              <span class="text-[10px] sm:text-xs uppercase tracking-wider text-theme-gold font-bold">${product.format}</span>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mb-3 line-clamp-2">${product.description}</p>
+            <div class="flex items-center justify-between mb-4 mt-auto">
+              <div class="flex items-center gap-2">
+                <span class="text-lg sm:text-xl font-bold text-theme-gold">₹${product.price}</span>
+                ${product.originalPrice ? `<span class="text-xs sm:text-sm text-gray-400 line-through">₹${product.originalPrice}</span>` : ''}
+              </div>
+            </div>
+            <button 
+              class="btn-store ${product.inStock ? 'bg-theme-gold hover:bg-theme-gold-dark' : 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed'} text-white py-2.5 sm:py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md buy-now"
+              ${!product.inStock ? 'disabled' : ''}
+              data-id="${product.id}">
+              ${product.inStock ? 'Buy Now →' : 'Out of Stock'}
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      // Reattach event listeners
+      document.querySelectorAll('.buy-now').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.dataset.id);
+          buyNow(id);
+        });
+      });
+    }
+
+    // Buy now function
+    function buyNow(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product && product.inStock) {
+        showToast(`Added ${product.name} to cart! Proceeding to checkout...`);
+      }
+    }
+
+    // Show toast
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast-animation mb-2 px-5 py-3 rounded-xl shadow-lg text-xs sm:text-sm font-medium flex items-center gap-2 pointer-events-auto bg-theme-gold text-white`;
+      toast.innerHTML = `<i class="fas fa-check-circle text-white text-sm"></i> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => { if (toast && toast.remove) toast.remove(); }, 2600);
+    }
+
+    // Initialize
+    renderProducts();
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const html = document.documentElement;
+
+    function toggleTheme() {
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark');
+    } else if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+    }
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+
+    function toggleRTL() {
+      if (html.getAttribute('dir') === 'rtl') {
+        html.removeAttribute('dir');
+        localStorage.setItem('direction', 'ltr');
+      } else {
+        html.setAttribute('dir', 'rtl');
+        localStorage.setItem('direction', 'rtl');
+      }
+    }
+
+    if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+    if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+    if (localStorage.getItem('direction') === 'rtl') {
+      html.setAttribute('dir', 'rtl');
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+      mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          if (menuIcon && closeIcon) {
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    function setupMobileDropdown(dropdownBtnId, menuContainerId, iconId) {
+      const dropdownBtn = document.getElementById(dropdownBtnId);
+      const menuContainer = document.getElementById(menuContainerId);
+      const icon = document.getElementById(iconId);
+
+      if (dropdownBtn && menuContainer && icon) {
+        dropdownBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isHidden = menuContainer.classList.contains('hidden');
+          if (isHidden) {
+            menuContainer.classList.remove('hidden');
+            icon.classList.add('rotate');
+          } else {
+            menuContainer.classList.add('hidden');
+            icon.classList.remove('rotate');
+          }
+        });
+      }
+    }
+
+    setupMobileDropdown('mobile-home-dropdown', 'mobile-home-menu', 'mobile-home-icon');
+
+    document.addEventListener('click', function (event) {
+      const isClickInsideMenu = mobileMenu?.contains(event.target);
+      const isClickOnButton = mobileMenuButton?.contains(event.target);
+      if (mobileMenu && !mobileMenu.classList.contains('hidden') && !isClickInsideMenu && !isClickOnButton) {
+        mobileMenu.classList.add('hidden');
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        document.body.style.overflow = '';
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 1280 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        if (menuIcon && closeIcon) {
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+  <style>
+    .dark .fa-sun {
+      display: none !important;
+    }
+
+    .dark .fa-moon {
+      display: inline-block !important;
+    }
+
+    .fa-moon {
+      display: none;
+    }
+
+    .fa-sun {
+      display: inline-block;
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</body>
+
+</html>

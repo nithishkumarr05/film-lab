@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Film Lab | Create Account — Darkroom Photography Studio</title>
+  <link rel="icon" type="image/jpeg" href="#">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== ABSOLUTELY FIXED NO-SCROLL BODY ===== */
+    /* Using fixed positioning on body ensures no scrolling whatsoever */
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #0a0a0a;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Fixed Background Image & Overlay - no bleed, full coverage */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1510127034890-b3e8b4b2a21f?auto=format&fit=crop&q=90&w=2000');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Main container — perfectly centered, respects padding with viewport units */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: clamp(12px, 3vh, 24px);
+      /* Ensuring container never overflows viewport */
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Card: fully flexible but content will never overflow or cause scroll */
+    .signup-card {
+      background: #ffffff;
+      border-radius: clamp(20px, 4vh, 28px);
+      padding: clamp(18px, 3.5vh, 32px) clamp(20px, 5vw, 36px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      transition: background 0.2s ease;
+      width: 100%;
+      /* max-height and overflow handling: ensure content fits without scroll */
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      /* but wait — we must guarantee no scrollbar unless absolutely needed? 
+         But due to dynamic content & small devices, we allow internal scroll
+         ONLY if content is taller than card's max-height, but we prevent body scroll.
+         The requirement: "fixed dont want to scroll" — interpreted as body never scrolls,
+         but card can have its own internal scroll if needed. However, to ensure everything
+         fits without scrollbars at all, we adjust font/ spacing with clamp.
+         For ultimate polish, we ensure card content is compact enough to never overflow
+         on typical phones. We'll also set overflow-y: auto but with subtle scroll only if needed.
+         The requirement "content should be within the padding" means content never goes outside card.
+         So we trust clamp and compact vertical rhythm. For extreme small heights, minimal internal scroll.
+      */
+      scrollbar-width: thin;
+    }
+    /* Hide scrollbar for cleaner look (optional) but keep functionality for tiny heights */
+    .signup-card::-webkit-scrollbar {
+      width: 3px;
+    }
+    .signup-card::-webkit-scrollbar-track {
+      background: #e0e0e0;
+      border-radius: 10px;
+    }
+    .signup-card::-webkit-scrollbar-thumb {
+      background: #9B7B4C;
+      border-radius: 10px;
+    }
+
+    .dark-mode .signup-card {
+      background: #121212;
+    }
+
+    /* Logo fluid */
+    .logo {
+      text-align: center;
+      margin-bottom: clamp(8px, 2vh, 20px);
+    }
+    .logo a {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4vh, 26px);
+      font-weight: 700;
+      font-style: italic;
+      color: #9B7B4C;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    /* Title section */
+    .title {
+      text-align: center;
+      margin-bottom: clamp(8px, 2vh, 18px);
+    }
+    .title h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 3.2vh, 26px);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: clamp(2px, 0.5vh, 6px);
+    }
+    .dark-mode .title h1 { color: #ffffff; }
+    .title p {
+      font-size: clamp(11px, 1.8vh, 13px);
+      color: #666;
+    }
+    .dark-mode .title p { color: #aaa; }
+
+    /* Social buttons */
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: clamp(6px, 1.8vw, 12px);
+      margin-bottom: clamp(8px, 2vh, 20px);
+    }
+    .social-btn {
+      flex: 1;
+      height: clamp(36px, 5vh, 44px);
+      border-radius: clamp(8px, 1.5vh, 40px);
+      border: 1px solid #e0e0e0;
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: clamp(10px, 1.6vh, 13px);
+      font-weight: 600;
+      color: #333;
+      transition: all 0.2s;
+    }
+    .dark-mode .social-btn {
+      background: #1e1e1e;
+      border-color: #333;
+      color: #ddd;
+    }
+    .social-btn i { font-size: clamp(12px, 2vh, 16px); }
+    .social-btn.google i { color: #DB4437; }
+    .social-btn.facebook i { color: #1877F2; }
+    .social-btn.apple i { color: #000; }
+    .dark-mode .social-btn.apple i { color: #fff; }
+
+    /* Divider */
+    .divider {
+      text-align: center;
+      margin: clamp(8px, 1.8vh, 16px) 0 clamp(10px, 2vh, 18px);
+      position: relative;
+    }
+    .divider::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%; width: 100%; height: 1px;
+      background: #e0e0e0;
+    }
+    .dark-mode .divider::before { background: #333; }
+    .divider span {
+      position: relative;
+      background: #ffffff;
+      padding: 0 12px;
+      font-size: clamp(8px, 1.4vh, 10px);
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .dark-mode .divider span { background: #121212; color: #777; }
+
+    /* Form groups with compact spacing */
+    .form-group {
+      margin-bottom: clamp(8px, 1.8vh, 14px);
+    }
+    .form-group label {
+      display: block;
+      font-size: clamp(8px, 1.3vh, 10px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888;
+      margin-bottom: clamp(3px, 0.8vh, 6px);
+    }
+    .dark-mode .form-group label { color: #999; }
+    .form-group input {
+      width: 100%;
+      padding: clamp(5px, 1.2vh, 10px) 0;
+      border: none;
+      border-bottom: 1.5px solid #e0e0e0;
+      font-size: clamp(12px, 1.9vh, 14px);
+      font-weight: 500;
+      color: #1a1a1a;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      transition: border-color 0.2s;
+    }
+    .dark-mode .form-group input { color: #ffffff; border-bottom-color: #333; }
+    .form-group input:focus { outline: none; border-bottom-color: #9B7B4C; }
+    .form-group input::placeholder { color: #bbb; font-weight: 400; }
+    .dark-mode .form-group input::placeholder { color: #555; }
+
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .password-wrapper input {
+      padding-right: 36px;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: clamp(11px, 1.7vh, 14px);
+      padding: 6px;
+    }
+    .dark-mode .toggle-password { color: #888; }
+
+    /* Checkbox group spacing */
+    .checkbox-group {
+      margin: clamp(8px, 2vh, 16px) 0 clamp(12px, 2.5vh, 20px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .checkbox-group input {
+      width: clamp(13px, 1.8vh, 15px);
+      height: clamp(13px, 1.8vh, 15px);
+      cursor: pointer;
+      accent-color: #9B7B4C;
+      flex-shrink: 0;
+    }
+    .checkbox-group label {
+      font-size: clamp(9px, 1.6vh, 11px);
+      color: #666;
+      cursor: pointer;
+      line-height: 1.3;
+    }
+    .dark-mode .checkbox-group label { color: #aaa; }
+    .checkbox-group a {
+      color: #9B7B4C;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Primary CTA button */
+    .btn-create {
+      width: 100%;
+      padding: clamp(9px, 2vh, 13px);
+      background: #9B7B4C;
+      border: none;
+      border-radius: 40px;
+      color: white;
+      font-size: clamp(11px, 1.8vh, 13px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      margin-bottom: clamp(10px, 2vh, 20px);
+      font-family: 'Lato', sans-serif;
+      transition: background 0.2s, transform 0.05s;
+    }
+    .btn-create:active { transform: scale(0.98); }
+
+    /* Login link */
+    .login-link {
+      text-align: center;
+      font-size: clamp(10px, 1.6vh, 12px);
+      color: #666;
+      padding-top: clamp(8px, 1.8vh, 16px);
+      border-top: 1px solid #eee;
+    }
+    .dark-mode .login-link { border-top-color: #2a2a2a; color: #aaa; }
+    .login-link a {
+      color: #9B7B4C;
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 5px;
+    }
+
+    /* Floating controls — always visible, no overlap issues */
+    .top-controls {
+      position: fixed;
+      top: clamp(12px, 2.5vh, 20px);
+      right: clamp(12px, 2.5vw, 20px);
+      display: flex;
+      gap: 10px;
+      z-index: 200;
+    }
+    .control-btn {
+      width: clamp(34px, 5vh, 42px);
+      height: clamp(34px, 5vh, 42px);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(155, 123, 76, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: clamp(13px, 2.2vh, 16px);
+      transition: 0.2s;
+    }
+    .control-btn:hover { background: rgba(155, 123, 76, 0.7); }
+
+    /* RTL adjustments */
+    [dir="rtl"] .toggle-password {
+      right: auto;
+      left: 0;
+    }
+    [dir="rtl"] .checkbox-group {
+      flex-direction: row-reverse;
+    }
+    [dir="rtl"] .login-link a {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+    [dir="rtl"] .social-login {
+      flex-direction: row-reverse;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #9B7B4C;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 300;
+      animation: toastFade 2.5s ease forwards;
+      white-space: nowrap;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      font-family: 'Lato', sans-serif;
+    }
+    @keyframes toastFade {
+      0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      12% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      88% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-8px); visibility: hidden; }
+    }
+
+    /* For extremely small devices (e.g., 480px height) we allow minimal card scrolling
+       but body remains fixed, no global scroll. Also ensure that content never exceeds card padding */
+    @media (max-height: 620px) {
+      .signup-card {
+        padding: 16px 22px;
+        max-height: calc(100vh - 24px);
+      }
+      .form-group {
+        margin-bottom: 6px;
+      }
+      .checkbox-group {
+        margin: 6px 0 10px;
+      }
+      .title {
+        margin-bottom: 4px;
+      }
+      .social-login {
+        margin-bottom: 6px;
+      }
+      .divider {
+        margin: 6px 0 8px;
+      }
+      .btn-create {
+        margin-bottom: 8px;
+      }
+    }
+
+    /* Force content to be fully inside card boundaries */
+    .signup-card * {
+      max-width: 100%;
+    }
+    input, button {
+      font-family: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-controls">
+    <button class="control-btn" id="themeToggle" title="Toggle Dark/Light Mode">
+      <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+    <button class="control-btn" id="rtlToggle" title="Toggle RTL Layout">
+      <i class="fas fa-exchange-alt"></i>
+    </button>
+  </div>
+
+  <div class="container">
+    <div class="signup-card">
+      <div class="logo"><a href="index.html">Film Lab</a></div>
+
+      <div class="title">
+        <h1>Create Account</h1>
+        <p>Start your analog journey with us</p>
+      </div>
+
+      <div class="social-login">
+        <button class="social-btn google" id="googleSignup">
+          <i class="fab fa-google"></i><span>Google</span>
+        </button>
+        <button class="social-btn facebook" id="facebookSignup">
+          <i class="fab fa-facebook-f"></i><span>Facebook</span>
+        </button>
+        <button class="social-btn apple" id="appleSignup">
+          <i class="fab fa-apple"></i><span>Apple</span>
+        </button>
+      </div>
+
+      <div class="divider"><span>Or sign up with email</span></div>
+
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label>FULL NAME</label>
+          <input type="text" id="fullname" placeholder="Ansel Adams" autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label>EMAIL ADDRESS</label>
+          <input type="email" id="email" placeholder="studio@filmlab.com" autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label>PASSWORD</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Create a strong password" autocomplete="new-password" required>
+            <button type="button" class="toggle-password" data-target="password">
+              <i class="fas fa-eye-slash"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>CONFIRM PASSWORD</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" placeholder="Repeat your password" autocomplete="new-password" required>
+            <button type="button" class="toggle-password" data-target="confirmPassword">
+              <i class="fas fa-eye-slash"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="termsCheckbox" required>
+          <label for="termsCheckbox">
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-create">Create Account</button>
+      </form>
+
+      <div class="login-link">
+        Already have an account? <a href="login.html">Log In</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Helper: show toast message without breaking layout
+    function showToast(message) {
+      const existingToast = document.querySelector('.toast');
+      if (existingToast) existingToast.remove();
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => { if (toast && toast.parentNode) toast.remove(); }, 2500);
+    }
+
+    // Password visibility toggles
+    function initPasswordToggles() {
+      document.querySelectorAll('.toggle-password').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const wrapper = btn.closest('.password-wrapper');
+          if (!wrapper) return;
+          const input = wrapper.querySelector('input');
+          const icon = btn.querySelector('i');
+          if (input.type === 'password') {
+            input.type = 'text';
+            if (icon) icon.className = 'fas fa-eye';
+          } else {
+            input.type = 'password';
+            if (icon) icon.className = 'fas fa-eye-slash';
+          }
+        });
+      });
+    }
+
+    // Dark Mode logic
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const bodyEl = document.body;
+    
+    function updateThemeIcon() {
+      if (bodyEl.classList.contains('dark-mode')) {
+        themeIcon.className = 'fas fa-sun';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+      }
+    }
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        bodyEl.classList.toggle('dark-mode');
+        localStorage.setItem('theme', bodyEl.classList.contains('dark-mode') ? 'dark' : 'light');
+        updateThemeIcon();
+      });
+    }
+    
+    if (localStorage.getItem('theme') === 'dark') bodyEl.classList.add('dark-mode');
+    updateThemeIcon();
+
+    // RTL Toggle
+    const rtlToggle = document.getElementById('rtlToggle');
+    if (rtlToggle) {
+      rtlToggle.addEventListener('click', () => {
+        const currentDir = document.documentElement.getAttribute('dir');
+        if (currentDir === 'rtl') {
+          document.documentElement.removeAttribute('dir');
+          localStorage.setItem('dir', 'ltr');
+        } else {
+          document.documentElement.setAttribute('dir', 'rtl');
+          localStorage.setItem('dir', 'rtl');
+        }
+      });
+    }
+    if (localStorage.getItem('dir') === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+
+    // Social login demo handlers
+    const providers = ['google', 'facebook', 'apple'];
+    providers.forEach(provider => {
+      const btn = document.getElementById(`${provider}Signup`);
+      if (btn) {
+        btn.addEventListener('click', () => {
+          showToast(`${provider.charAt(0).toUpperCase() + provider.slice(1)} sign-up demo — coming soon`);
+        });
+      }
+    });
+
+    // Form submission with validation
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+      signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const fullname = document.getElementById('fullname').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const confirm = document.getElementById('confirmPassword').value;
+        const termsChecked = document.getElementById('termsCheckbox').checked;
+        
+        if (!fullname || fullname.length < 2) {
+          return showToast('Please enter a valid full name');
+        }
+        // Email regex with proper domain validation
+        const emailPattern = /^[^\s@]+@([^\s@]+\.)+[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          return showToast('Please enter a valid email address');
+        }
+        if (!password || password.length < 6) {
+          return showToast('Password must be at least 6 characters');
+        }
+        if (password !== confirm) {
+          return showToast('Passwords do not match');
+        }
+        if (!termsChecked) {
+          return showToast('Please agree to the Terms of Service');
+        }
+        
+        const firstName = fullname.split(' ')[0] || "Photographer";
+        showToast(`✨ Welcome ${firstName}! Account successfully created.`);
+        
+        // Optional: Reset? Not necessary, just provide visual feedback.
+        // You could also clear sensitive fields if needed, but better to keep.
+        // For better UX, we keep the form intact.
+      });
+    }
+    
+    // Ensure any dynamic content stays within card and no body scrolling
+    // Also manually prevent any wheel or touchmove on body to enforce strict no-scroll
+    function preventBodyScroll(e) {
+      // Only prevent if the target is not inside an element that should be scrollable inside card
+      // However, if card has internal scroll, we do NOT block when interacting with scrollable areas.
+      // But we want body never scrolls, so we block any touchmove on body but allow scroll within card's overflow-y.
+      // Since body is position:fixed, there's no body scroll anyway. But we add extra safety.
+      const isInsideCard = e.target.closest('.signup-card');
+      // If event is inside signup-card and card content might scroll we should NOT prevent default
+      // because card's internal scroll should be allowed. But if user swipes outside card, we block.
+      if (!isInsideCard) {
+        e.preventDefault();
+      }
+      // If inside card, allow natural behavior (so inner scroll works if needed)
+    }
+    
+    document.body.addEventListener('touchmove', preventBodyScroll, { passive: false });
+    document.body.addEventListener('wheel', (e) => {
+      // Only block if not inside scrollable card area, but we check if target is inside card and card actually scrollable
+      const insideScrollable = e.target.closest('.signup-card');
+      if (!insideScrollable) {
+        e.preventDefault();
+      } else {
+        // Let the card's own scroll handle it, no need to block.
+        // But ensure that we never propagate to body scroll (which is fixed anyway)
+        // We allow default within card.
+      }
+    }, { passive: false });
+    
+    // Also ensure that focusing input doesn't cause unwanted page shift (viewport remains steady)
+    // Because body is fixed, no shifting.
+    
+    // For perfect padding: we already have container and card with inner spacing.
+    // Make sure all text and elements are visually contained.
+    initPasswordToggles();
+  </script>
+</body>
+</html>
