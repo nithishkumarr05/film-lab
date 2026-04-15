@@ -526,79 +526,107 @@
     </div>
   </section>
 
-  <section class="py-24 bg-gray-50 dark:bg-[#151515] transition-colors duration-300">
-    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="text-theme-gold text-xs uppercase tracking-widest font-semibold block mb-2">Film Provisions</span>
-        <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white">Fresh & Expired Stock</h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div
-          class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl">
-          <div
-            class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
-            <img src="assets/index1.jpg" alt="Kodak Portra 400"
-              class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-            <div
-              class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-              Add</div>
-          </div>
-          <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Negative</p>
-          <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">Kodak Portra 400 (35mm)</h4>
-          <p class="text-theme-gold text-sm mt-2 font-bold">₹1,450.00</p>
-        </div>
-
-        <div
-          class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl">
-          <div
-            class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
-            <img src="assets/index2.jpg" alt="Ilford HP5 Plus"
-              class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 opacity-60">
-            <div
-              class="absolute top-4 left-4 bg-dark-gray text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10">
-              Sold Out</div>
-          </div>
-          <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Black & White</p>
-          <h4 class="font-serif font-bold text-lg text-gray-400 dark:text-gray-500">Ilford HP5 Plus (120)</h4>
-          <p class="text-gray-400 text-sm mt-2 font-bold">₹850.00</p>
-        </div>
-
-        <div
-          class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl">
-          <div
-            class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
-            <img src="assets/index3.jpg" alt="CineStill 800T"
-              class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-            <div
-              class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
-              Add</div>
-          </div>
-          <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Tungsten</p>
-          <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">CineStill 800T (35mm)</h4>
-          <p class="text-theme-gold text-sm mt-2 font-bold">₹1,600.00</p>
-        </div>
-
-        <div
-          class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl">
-          <div
-            class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
-            <img src="assets/index4.jpg" alt="Fuji Pro 400H"
-              class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
-            <div
-              class="absolute top-4 left-4 bg-theme-gold text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10">
-              New</div>
-            <div
-              class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10">
-              Add</div>
-          </div>
-          <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Negative</p>
-          <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">Fuji Pro 400H (120)</h4>
-          <p class="text-theme-gold text-sm mt-2 font-bold">₹1,250.00</p>
-        </div>
-      </div>
+ ```html
+<section class="py-24 bg-gray-50 dark:bg-[#151515] transition-colors duration-300">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16">
+      <span class="text-theme-gold text-xs uppercase tracking-widest font-semibold block mb-2">
+        Film Provisions
+      </span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-dark-gray dark:text-white">
+        Fresh & Expired Stock
+      </h2>
     </div>
-  </section>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- CARD 1 -->
+      <div class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl flex flex-col h-full">
+        
+        <div class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
+          <img src="assets/index1.jpg" alt="Kodak Portra 400"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+          <div class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+            Add
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Negative</p>
+        <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">
+          Kodak Portra 400 (35mm)
+        </h4>
+
+        <p class="text-theme-gold text-sm mt-auto font-bold">₹1,450.00</p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl flex flex-col h-full">
+        
+        <div class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
+          <img src="assets/index2.jpg" alt="Ilford HP5 Plus"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500 opacity-60">
+          <div class="absolute top-4 left-4 bg-dark-gray text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10">
+            Sold Out
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Black & White</p>
+        <h4 class="font-serif font-bold text-lg text-gray-400 dark:text-gray-500">
+          Ilford HP5 Plus (120)
+        </h4>
+
+        <p class="text-gray-400 text-sm mt-auto font-bold">₹850.00</p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl flex flex-col h-full">
+        
+        <div class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
+          <img src="assets/index3.jpg" alt="CineStill 800T"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+          <div class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+            Add
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Tungsten</p>
+        <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">
+          CineStill 800T (35mm)
+        </h4>
+
+        <p class="text-theme-gold text-sm mt-auto font-bold">₹1,600.00</p>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="group cursor-pointer bg-white dark:bg-dark-gray p-6 border border-gray-100 dark:border-white/5 hover:border-theme-gold transition-colors duration-300 shadow-sm hover:shadow-xl flex flex-col h-full">
+        
+        <div class="aspect-square bg-light-peach dark:bg-[#111] mb-6 flex items-center justify-center relative overflow-hidden">
+          <img src="assets/index4.jpg" alt="Fuji Pro 400H"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500">
+          
+          <div class="absolute top-4 left-4 bg-theme-gold text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10">
+            New
+          </div>
+
+          <div class="absolute bottom-4 right-4 bg-white text-dark-gray text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity shadow-md z-10">
+            Add
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 font-light mb-1 uppercase tracking-wider">Color Negative</p>
+        <h4 class="font-serif font-bold text-lg text-dark-gray dark:text-white">
+          Fuji Pro 400H (120)
+        </h4>
+
+        <p class="text-theme-gold text-sm mt-auto font-bold">₹1,250.00</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+```
+
 
   <section class="py-24 bg-dark-gray text-white border-b border-theme-gold relative overflow-hidden">
     <div class="absolute -right-20 -top-20 w-80 h-80 bg-theme-gold/20 rounded-full mix-blend-screen filter blur-3xl">
